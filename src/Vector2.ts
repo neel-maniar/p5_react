@@ -53,4 +53,8 @@ export default class Vector2 {
     public get inversed(): Vector2 {
         return new Vector2(-this.x, -this.y);
     }
+
+    public scale(s: number): Vector2 {
+        return new Vector2(this.x * s, this.y * s);
+    }
 }

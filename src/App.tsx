@@ -13,15 +13,22 @@ interface SketchState {
 }
 
 const App: React.FC = () => {
-  const state: SketchState = {particles:[{pos: new Vector2(0, 0), vel: new Vector2(1,1)}]};
+  const state: SketchState = {particles:[
+      {pos: new Vector2(0, 0), vel: new Vector2(1,1)},
+      {pos: new Vector2(0, 0), vel: new Vector2(1,1)}
+  ]};
 
   const setup = useCallback((p: p5) => {
-    state.particles[0].pos.x = p.width / 2;
-    state.particles[0].pos.y = p.height / 2;
-    state.particles[0].vel.x = p.width * 0.0005;
-    state.particles[0].vel.y = p.height * 0.0005;
+    state.particles.forEach(particle => {
+      const angle = p.random() * 2 * p.PI
+      const direction = new Vector2(p.cos(angle), p.sin(angle));
+      const magnitude = 4;
+      // const direction: Vector2 = 
+      particle.pos.x = p.width / 2;
+      particle.pos.y = p.height / 2;
+      particle.vel = direction.scale(magnitude);
+    });
   }, []);
-
 
   const draw = useCallback((p: p5) => {
     const radius = Math.min(p.width, p.height) * 0.05;
