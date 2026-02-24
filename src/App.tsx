@@ -13,19 +13,37 @@ interface SketchState {
 }
 
 const App: React.FC = () => {
+<<<<<<< HEAD
   const state: SketchState = {
     particles: [
       { pos: new Vector2(0, 0), vel: new Vector2(1, 1) },
       { pos: new Vector2(0, 0), vel: new Vector2(1, 1) },
     ],
+=======
+  // const state: SketchState = {particles:[
+  //     {pos: new Vector2(0, 0), vel: new Vector2(1,1)},
+  //     {pos: new Vector2(0, 0), vel: new Vector2(1,1)}
+  // ]};
+
+  const state: SketchState = {
+    particles: Array.from({ length: 1000 }, () => ({
+      pos: new Vector2(),
+      vel: new Vector2(),
+    })),
+>>>>>>> fecd329 (1000 particles)
   };
 
   const setup = useCallback((p: p5) => {
     state.particles.forEach((particle) => {
       const angle = p.random() * 2 * p.PI;
       const direction = new Vector2(p.cos(angle), p.sin(angle));
+<<<<<<< HEAD
       const magnitude = 4;
       // const direction: Vector2 =
+=======
+      const magnitude = 2; //p.random() + 1;
+      // const direction: Vector2 = 
+>>>>>>> fecd329 (1000 particles)
       particle.pos.x = p.width / 2;
       particle.pos.y = p.height / 2;
       particle.vel = direction.scale(magnitude);
@@ -33,7 +51,7 @@ const App: React.FC = () => {
   }, []);
 
   const draw = useCallback((p: p5) => {
-    const radius = Math.min(p.width, p.height) * 0.05;
+    const radius = Math.min(p.width, p.height) * 0.005;
 
     p.background(255, 120, 20);
     p.noStroke();
