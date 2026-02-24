@@ -86,7 +86,11 @@ const App: React.FC = () => {
     <div>
       <P5Background setup={setup} draw={draw} frameRate={30} />
       <div style={{ position: "relative", zIndex: 1, padding: "2rem" }}>
-        <h1 style={{ color: "white" }}>Your website content here</h1>
+        <h1 style={{ color: "black" }}>Your website content here</h1>
+        <p style={{ color: "black" }}>
+          Imagine this is mathsdb and there is some interesting information
+          about us on this page.
+        </p>
       </div>
     </div>
   );
